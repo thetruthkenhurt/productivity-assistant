@@ -1,9 +1,14 @@
+import os
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
 # Create the SQLite database
-engine = create_engine('sqlite:///productivity.db')
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+session = SessionLocal()
 Base = declarative_base()
 
 # Existing Task class
