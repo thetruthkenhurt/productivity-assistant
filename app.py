@@ -4,7 +4,6 @@ import pandas as pd
 import plotly.express as px
 import datetime
 from transformers import pipeline
-from auth import login
 
 # The following lines were used for debugging purposes and can be removed
 
@@ -25,10 +24,6 @@ def load_summarizer():
 summarizer = load_summarizer() # Initialize the summarizer
 
 def main():
-    if "user" not in st.session_state:
-        login()
-        return  # Only show login screen if not authenticated    
-    
     st.title("AI-Enhanced Personal Productivity Assistant") # Set the app title
 
     menu = ["Add Task", "View Tasks", "Update Task", "Delete Task", "Add Habit", "View Habits", "Analytics", "NLP Tools"]
